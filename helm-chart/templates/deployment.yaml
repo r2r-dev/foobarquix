@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "foobarqix.fullname" . }}
+  labels: 
+{{ include "foobarqix.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "foobarqix.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "foobarqix.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ include "foobarqix.name" . }}
+      containers:
+        - name: {{ .Chart.Name }} 
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.app.port }} 
+          envFrom:
+            - configMapRef:
+                name: {{ include "foobarqix.fullname" . }}
+          livenessProbe:
+            httpGet:
+              path: /ready
+              port: {{ .Values.app.port }}
+            initialDelaySeconds: 3
+            periodSeconds: 3
+
