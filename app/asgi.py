@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 
 from app.api.routes.api import router as api_router
-from app.core.config import DEBUG
-from app.core.config import PROJECT_NAME
-from app.core.config import VERSION
+from app.core.config import DEBUG, PROJECT_NAME, VERSION
 
 
 def get_application() -> FastAPI:
@@ -15,4 +13,3 @@ def get_application() -> FastAPI:
 
 
 application = get_application()
-

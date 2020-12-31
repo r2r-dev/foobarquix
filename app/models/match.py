@@ -1,37 +1,32 @@
 from pydantic import BaseModel
 
+MATCH_VERBS = ((3, "Foo"), (5, "Bar"), (7, "Qix"))
+
 
 class MatchResponse(BaseModel):
     result: str
 
-class MatchRequest:
-    match_verbs = (
-      (3,"Foo"),
-      (5,"Bar"),
-      (7,"Qix")
+
+def match_map(matchf, numbers, verbs):
+    return [verb[1] for verb in verbs for number in numbers if matchf(number, verb[0])]
+
+
+def match(number):
+    divisible_matches = match_map(
+        matchf=lambda number, match_verb: number > 0 and number % match_verb == 0,
+        numbers=[number],
+        verbs=MATCH_VERBS,
     )
-    match_map = lambda matchf, numbers, verbs: [
-      verb[1]
-      for verb in verbs
-      for number in numbers
-      if matchf(number, verb[0])
-    ]
+    existence_matches = match_map(
+        matchf=lambda number, match_verb: number == match_verb,
+        numbers=[int(digit) for digit in str(number)],
+        verbs=MATCH_VERBS,
+    )
 
-    def match(self, number):
-      divisible_matches = MatchRequest.match_map(
-        matchf = lambda number, match_verb: number > 0 and number % match_verb == 0,
-        numbers = [number],
-        verbs = MatchRequest.match_verbs
-      )
-      existence_matches = MatchRequest.match_map(
-        matchf = lambda number, match_verb: number == match_verb,
-        numbers = [int(x) for x in str(number)],
-        verbs = MatchRequest.match_verbs
-      )
+    matches = divisible_matches + existence_matches
 
-      matches = divisible_matches + existence_matches
-
-      if (len(matches) == 0): result = str(number)
-      else: result = "".join(matches)
-      return MatchResponse(result = result)
-
+    if matches:
+        match_s = "".join(matches)
+    else:
+        match_s = str(number)
+    return MatchResponse(result=match_s)
