@@ -13,8 +13,11 @@ spec:
     path: charts/foobarqix
   destination:
     server: https://kubernetes.default.svc
-    #    namespace: foobarqix
+    namespace: foobarqix
   syncPolicy:
+    # https://github.com/argoproj/argo-cd/issues/3490#issuecomment-732384194
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
 
