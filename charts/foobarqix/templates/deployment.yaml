@@ -19,7 +19,10 @@ spec:
       serviceAccountName: {{ include "foobarqix.name" . }}
       containers:
         - name: {{ .Chart.Name }} 
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          {{- with .Values.image }}
+          # https://github.com/kubernetes/minikube/issues/8867#issuecomment-734681387
+          image: "{{.repository}}{{- if (.tag) -}} :{{.tag}} {{- else -}} @{{.digest}} {{- end -}}"
+          {{- end }}
           ports:
             - containerPort: {{ .Values.app.port }} 
           envFrom:

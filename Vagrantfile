@@ -26,6 +26,13 @@ Vagrant.configure("2") do |config|
 
       # Install Helm
       curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+ 
+      # Install argocd
+      kubectl create namespace argocd
+      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v1.8.1/manifests/install.yaml
+      curl -Lso /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/v1.8.1/argocd-linux-amd64
+      install -m 755 /tmp/argocd /usr/local/bin
+      
   SHELL
   config.vm.synced_folder ".", "/syncd"
   config.vm.boot_timeout = 600
