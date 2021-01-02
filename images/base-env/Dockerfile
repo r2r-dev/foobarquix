@@ -14,7 +14,8 @@ apt-get clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV POETRY_HOME=/opt/poetry
-RUN curl -sSl https://raw.githubusercontent.com/python-poetry/poetry/a2d2937d7d3336771eab72c60452f59814bbb92d/get-poetry.py -o get-poetry.py && \
+RUN python3 -m pip install --upgrade pip==20.3.1 && \
+    curl -sSl https://raw.githubusercontent.com/python-poetry/poetry/a2d2937d7d3336771eab72c60452f59814bbb92d/get-poetry.py -o get-poetry.py && \
     python3 get-poetry.py --version 1.1.4 && \
     chmod 755 -R /opt/poetry/bin/poetry && \
     python3 -m pip install nuitka==0.6.10.4
