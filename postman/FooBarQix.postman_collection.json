@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Readinessh Check",
+			"name": "Readiness Check",
 			"request": {
 				"method": "GET",
 				"header": [],

@@ -6,5 +6,5 @@ router = APIRouter()
 
 
 @router.get("/ready", response_model=ReadyResponse)
-async def readinessh_check():
+async def readiness_check():
     return ReadyResponse(status="ok")

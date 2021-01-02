@@ -10,8 +10,8 @@
             "tags":[
                "ready"
             ],
-            "summary":"Readinessh Check",
-            "operationId":"readinessh_check_ready_get",
+            "summary":"Readiness Check",
+            "operationId":"readiness_check_ready_get",
             "responses":{
                "200":{
                   "description":"Successful Response",
