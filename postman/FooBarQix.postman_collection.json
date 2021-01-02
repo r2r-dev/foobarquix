@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "8628f954-fca1-4303-ab99-dfc94bd31beb",
+		"name": "FooBarQix application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Readinessh Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/ready",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"ready"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ready",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ready"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"status\": \"magna nisi laborum occaecat enim\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/:number",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						":number"
+					],
+					"variable": [
+						{
+							"key": "number",
+							"value": "<integer>",
+							"type": "string",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Validation Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/:number",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":number"
+							],
+							"variable": [
+								{
+									"key": "number"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"detail\": [\n  {\n   \"loc\": [\n    \"in ut\",\n    \"dolore nulla sint\"\n   ],\n   \"msg\": \"adipisicing aute\",\n   \"type\": \"ex esse est\"\n  },\n  {\n   \"loc\": [\n    \"veniam Lorem dolor adipisici\",\n    \"nisi dolor\"\n   ],\n   \"msg\": \"do non\",\n   \"type\": \"aute esse exercitation o\"\n  }\n ]\n}"
+				},
+				{
+					"name": "Successful Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/:number",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":number"
+							],
+							"variable": [
+								{
+									"key": "number"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"result\": \"velit irure et aute\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
