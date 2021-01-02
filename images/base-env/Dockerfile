@@ -1,5 +1,5 @@
-FROM python:3.8.1-slim-buster
-#FROM python@sha256:56d9bdc243bc53d4bb055305b58cc0be15b05cc09dcda9b9d5e224233889b61b
+#FROM python:3.8.1-slim-buster
+FROM python@sha256:56d9bdc243bc53d4bb055305b58cc0be15b05cc09dcda9b9d5e224233889b61b
 ENV PYTHONUNBUFFERED 1
 
 RUN \
