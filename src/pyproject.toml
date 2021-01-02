@@ -21,6 +21,28 @@ flake8 = "^3.8.4"
 autoflake = "^1.4"
 black = "^20.8b1"
 flake8-fixme = "^1.1"
+pytest-cov = "^2.10.1"
+
+[tool.isort]
+profile = "black"
+src_paths = ["app", "tests"]
+combine_as_imports = true
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+filterwarnings = "error"
+addopts = '''
+  --strict-markers
+  --tb=short
+  --cov=app
+  --cov=tests
+  --cov-branch
+  --cov-report=term-missing
+  --cov-report=html
+  --cov-report=xml
+  --no-cov-on-fail
+  --cov-fail-under=100
+'''
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
