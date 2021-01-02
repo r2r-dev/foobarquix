@@ -37,6 +37,12 @@ build:  base-env-image ## Build foobarqix binary
        	build/run-in-docker.sh \
 		build/build.sh
 
+.PHONY: test
+test:  base-env-image ## Test foobarqix app
+	@BASE_IMAGE=base-env \
+       	build/run-in-docker.sh \
+		build/test.sh
+
 .PHONY: clean
 clean: ## Remove .cache directory
 	rm -rf .cache/

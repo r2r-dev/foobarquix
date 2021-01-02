@@ -14,12 +14,12 @@ httptools = "^0.1.1"
 click = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
+requests = "^2.25.1"
 pytest = "^6.2.1"
 isort = "^5.6.4"
 flake8 = "^3.8.4"
 autoflake = "^1.4"
 black = "^20.8b1"
-wemake-python-styleguide = { git = "https://github.com/wemake-services/wemake-python-styleguide", rev = "a787ee1" }
 flake8-fixme = "^1.1"
 
 [build-system]
