@@ -4,7 +4,7 @@ set -e
 set -x
 
 
-flake8 app
+flake8 app wsgi.py tests
 
-black --check app --diff
-isort --check-only app
+black --check app wsgi.py --diff
+isort --check-only app wsgi.py -rc

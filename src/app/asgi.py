@@ -5,7 +5,12 @@ from app.core.config import DEBUG, PROJECT_NAME, VERSION
 
 
 def get_application() -> FastAPI:
-    application = FastAPI(title=PROJECT_NAME, debug=DEBUG, version=VERSION)
+    application = FastAPI(
+        title=PROJECT_NAME,
+        debug=DEBUG,
+        version=VERSION,
+        docs_url="/",
+    )
 
     application.include_router(api_router)
 

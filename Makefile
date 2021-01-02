@@ -41,11 +41,14 @@ build:  base-env-image ## Build foobarqix binary
 test:  base-env-image ## Test foobarqix app
 	@BASE_IMAGE=base-env \
        	build/run-in-docker.sh \
+		build/lint.sh
+	@BASE_IMAGE=base-env \
+	build/run-in-docker.sh \
 		build/test.sh
 
 .PHONY: clean
-clean: ## Remove .cache directory
-	rm -rf .cache/
+clean: ## Remove .cache directory and foobarqix binary
+	rm -rf .cache/ image/runtime/bin
 
 .PHONY: dev-env
 dev-env: image ## Start a local Kubernetes cluster using minikube and deploy application

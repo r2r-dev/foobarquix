@@ -1,6 +1,4 @@
-"""
-Runs the project in gunicorn
-"""
+"""Runs the project in gunicorn."""
 import os
 import sys
 
@@ -9,12 +7,9 @@ from gunicorn.app.base import Application
 from app.asgi import get_application
 
 
-def run_uwsgi():
-    class MyApplication(Application):
-        """
-        Bypasses the class `WSGIApplication` and made it
-        independent from command line arguments
-        """
+def run_uwsgi(host, port, workers):
+    class ApplicationLoader(Application):
+        """Bypasses the class `WSGIApplication`."""
 
         def init(self, parser, opts, args):
 
@@ -34,23 +29,24 @@ def run_uwsgi():
     sys.argv = [
         "--gunicorn",
         "-w",
-        os.environ["WORKERS"],
+        workers,
         "-k",
         "uvicorn.workers.UvicornWorker",
-    ]
-
-    sys.argv.append(
         "-b {host}:{port}".format(
-            host=os.environ["APP_HOST"],
-            port=os.environ["APP_PORT"],
+            host=host,
+            port=port,
         ),
-    )
+    ]
 
     # Throws an error if this is missing.
     sys.argv.append("app.asgi:application")
 
-    MyApplication().run()
+    ApplicationLoader().run()
 
 
 if __name__ == "__main__":
-    run_uwsgi()
+    run_uwsgi(
+        host=os.getenv("APP_HOST", "localhost"),
+        port=os.getenv("APP_PORT", "8000"),
+        workers=os.getenv("WORKERS", "4"),
+    )
