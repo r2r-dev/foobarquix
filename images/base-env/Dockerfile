@@ -1,5 +1,5 @@
 #FROM python:3.8.1-slim-buster
-FROM python@sha256:56d9bdc243bc53d4bb055305b58cc0be15b05cc09dcda9b9d5e224233889b61b
+FROM mirror.gcr.io/library/python@sha256:cede59c0e2fcbabed9b3094f1564917632ecdd11c25c2a275654946938225ef4
 ENV PYTHONUNBUFFERED 1
 
 RUN \
