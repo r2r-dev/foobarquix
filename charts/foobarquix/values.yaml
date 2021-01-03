@@ -1,24 +1,32 @@
-# Default values for app1.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+# -- Number of replicas to deploy
 replicaCount: 3 
 app:
+  # -- Port on which application listens for connections
   port: 8000
+  # -- Host from which application accepts connections
   host: '0.0.0.0'
+  # -- Number of workers to run in container
   workers: 4
 
 image:
+  # --Image to use for deploying
   repository: 'foobarquix'
+  # --Image tag to use for deploying
   tag: '0.1.0'
+  # --Image digest to use for deploying
   digest: sha256:e4154f33e5210137c8dbc593afa357cc1cb969967d6ea3431a32ff9565a4e586
+  # -- Image pull policy
   pullPolicy: IfNotPresent
 
+# -- Image pull secrets
 imagePullSecrets: []
+# -- Application name override
 nameOverride: ""
+# -- Application name override
 fullnameOverride: ""
 
 service:
+  # -- Service type to use
   type: ClusterIP
   port: 80
 
