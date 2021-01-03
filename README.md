@@ -89,6 +89,19 @@ Usage:
   clean            Remove .cache directory and foobarquix binary
   dev-env          Start a local Kubernetes cluster using minikube and deploy application
 ```
+### Environment
+This project relies strongly on environment hermeticity and reproducibility. Such can be achieved (to some degree) by utilising containerized development environment.
+
+Targets [`test`](build/test.sh) and [`build`](build/build.sh) are [executed](build/run-in-docker.sh) within previously compiled [image](images/base-env), and their results are stored on host, rather than in a container itself. This approach allows for greater flexibility, portability, and fine grained caching of intermediate artifacts.
+
+### Packaging
+Application distributed as [container image](images/runtime), basing on tailored down rootfs without usual distribution overhead and unnecessary utilities. Code itself is [compiled to a binary format](build/build.sh) in order to even further reduce its size. Moreover, to limit possibility of exploitation application process is executed as non-root user
+
+### Deployment
+FooBarQix is suitable for running on Kubernetes cluster in a form of [Helm chart](charts/foobarqix).
+
+### Infrastructure
+This repository contains scripts for [local infastructure](build/dev-env.sh), set-up as well as resource definitions allowing for [GitOps](infra/argocd) style deployment.
 
 ## Web Routes
 All routes are available on `/` or `/redoc` paths with Swagger or ReDoc.
