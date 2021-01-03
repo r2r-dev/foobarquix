@@ -7,7 +7,7 @@ ifndef VERBOSE
 endif
 
 # set default shell
-SHELL=/bin/bash -o pipefail -o errexit
+SHELL=/usr/bin/env bash -o pipefail -o errexit
 
 # Use the 0.0 tag for testing, it shouldn't clobber any release builds
 TAG ?= $(shell cat TAG)
