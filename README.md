@@ -2,14 +2,14 @@
 
 ## Overview
 *foobarquix* is a simple application for categorizing numbers by given criteria:
-- If the number is divisible by 3 or contains a 3, return a string containing Foo
-- If the number is divisible by 5 or contains a 5, return a string containing Bar
-- If the number is divisible by 7 or contains a 7, return a string containing Quix
-- Else, return the number
+- *If the number is divisible by 3 or contains a 3, return a string containing Foo*
+- *If the number is divisible by 5 or contains a 5, return a string containing Bar*
+- *If the number is divisible by 7 or contains a 7, return a string containing Quix*
+- *Else, return the number*
 
 and following constraints:
-- Look at the divisor before the content `(ex: 51 -> FooBar)`
-- Look at the content in the order it is displayed `(ex: 53 -> BarFoo)`
+- *Look at the divisor before the content `(ex: 51 -> FooBar)`*
+- *Look at the content in the order it is displayed `(ex: 53 -> BarFoo)`*
 
 User can interact with application via REST API by issuing `GET` requests.
 
@@ -33,7 +33,7 @@ You can delete dev-env by issuing: minikube delete
 ```
 *Note: above adresses may be different for your installation.*
 
-Finally, you can:
+Finally, you can interact with application:
 1. Check application health:
 ```
 curl http://foobarquix.192.168.49.2.nip.io/ready
@@ -50,6 +50,8 @@ curl http://foobarquix.192.168.49.2.nip.io/53
 Its structure is as follows:
 ```
 foobarquix
+├── Vagrantfile          Virtualized environment definition
+├── Makefile             Build, test and deployment targets definitions
 ├── build                Scripts for orchestrating application development
 ├── charts               Helm chart for application
 │   └── foobarquix
@@ -61,12 +63,13 @@ foobarquix
 │   └── minikube         Minikube patches
 ├── postman              Application schema
 └── src                  Python project root
+    ├── wsgi.py          Application launcher
     ├── app              FastApi application
     │   ├── api          
     │   │   └── routes   Web routes for specific endpoints
     │   ├── core         Aplication configuration
     │   └── models       Request specific logic
-    ├── scripts          Helper scripts for linting, formating and testing
+    ├── scripts          Helper scripts for linting, formating and testing python code
     └── tests            Test logic
         └── data         Supplementary input data for tests
 ```
