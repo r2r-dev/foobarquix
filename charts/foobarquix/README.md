@@ -22,7 +22,7 @@ A Helm chart for FooBarQuix
 | image.digest | string | `"sha256:e4154f33e5210137c8dbc593afa357cc1cb969967d6ea3431a32ff9565a4e586"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"foobarquix"` |  |
-| image.tag | string | `"0.1.0"` |  |
+| image.tag | string | `"0.2.0"` |  |
 | imagePullSecrets | list | `[]` | Image pull secrets |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"nginx"` |  |
 | ingress.enabled | bool | `true` |  |
