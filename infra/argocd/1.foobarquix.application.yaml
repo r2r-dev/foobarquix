@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: foobarqix
+  name: foobarquix
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: git@github.com:r2r-dev/foobarqix.git
+    repoURL: git@github.com:r2r-dev/foobarquix.git
     targetRevision: HEAD
-    path: charts/foobarqix
+    path: charts/foobarquix
   destination:
     server: https://kubernetes.default.svc
-    namespace: foobarqix
+    namespace: foobarquix
   syncPolicy:
     # https://github.com/argoproj/argo-cd/issues/3490#issuecomment-732384194
     syncOptions:

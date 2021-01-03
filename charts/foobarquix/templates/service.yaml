@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "foobarqix.fullname" . }}
+  name: {{ include "foobarquix.fullname" . }}
   labels:
-{{ include "foobarqix.labels" . | indent 4 }}
+{{ include "foobarquix.labels" . | indent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "foobarqix.name" . }}
+    app.kubernetes.io/name: {{ include "foobarquix.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

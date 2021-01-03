@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   repositories: |
-    - url: git@github.com:r2r-dev/foobarqix
+    - url: git@github.com:r2r-dev/foobarquix
       sshPrivateKeySecret:
         name: argocd-repository-secret
         key: ssh-privatekey

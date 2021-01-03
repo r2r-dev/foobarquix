@@ -19,26 +19,26 @@ help:  ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 .PHONY: image
-image: build ## Build foobarqix image
-	@docker build -t foobarqix:$(TAG) images/runtime
+image: build ## Build foobarquix image
+	@docker build -t foobarquix:$(TAG) images/runtime
 
 .PHONY: base-env-image
 base-env-image: 
 	@docker build images/base-env -t base-env
 
 .PHONY: clean-image
-clean-image: ## Remove foobaqix image
-	echo "removing old image foobarqix:$(TAG)"
-	@docker rmi -f foobarqix:$(TAG) || true
+clean-image: ## Remove foobaquix image
+	echo "removing old image foobarquix:$(TAG)"
+	@docker rmi -f foobarquix:$(TAG) || true
 
 .PHONY: build
-build:  base-env-image ## Build foobarqix binary
+build:  base-env-image ## Build foobarquix binary
 	@BASE_IMAGE=base-env \
        	build/run-in-docker.sh \
 		build/build.sh
 
 .PHONY: test
-test:  base-env-image ## Test foobarqix app
+test:  base-env-image ## Test foobarquix app
 	@BASE_IMAGE=base-env \
        	build/run-in-docker.sh \
 		build/lint.sh
@@ -47,7 +47,7 @@ test:  base-env-image ## Test foobarqix app
 		build/test.sh
 
 .PHONY: clean
-clean: ## Remove .cache directory and foobarqix binary
+clean: ## Remove .cache directory and foobarquix binary
 	rm -rf .cache/ image/runtime/bin
 
 .PHONY: dev-env

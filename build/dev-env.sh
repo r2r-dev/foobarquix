@@ -85,23 +85,23 @@ argocd login \
     "argocd.${INGRESS_HOST}"
 
 echo "[dev-env] pushing app image"
-#minikube cache delete "foobarqix:${TAG}" 2> /dev/null || true
-minikube cache add "foobarqix:${TAG}"
+#minikube cache delete "foobarquix:${TAG}" 2> /dev/null || true
+minikube cache add "foobarquix:${TAG}"
 minikube cache reload
 
-echo "[dev-env] deploying foobarqix"
+echo "[dev-env] deploying foobarquix"
 kubectl apply -f infra/argocd -n argocd
-argocd app set foobarqix -p ingress.host.name="foobarqix.${INGRESS_HOST}"
+argocd app set foobarquix -p ingress.host.name="foobarquix.${INGRESS_HOST}"
 
 ATTEMPTS=0
-ROLLOUT_STATUS_CMD="kubectl get namespace foobarqix -n foobarqix"
+ROLLOUT_STATUS_CMD="kubectl get namespace foobarquix -n foobarquix"
 until $ROLLOUT_STATUS_CMD 2>/dev/null || [ $ATTEMPTS -eq 60 ]; do
   ATTEMPTS=$((ATTEMPTS + 1))
   sleep 10
 done
 
 ATTEMPTS=0
-ROLLOUT_STATUS_CMD="kubectl rollout status deployment/foobarqix -n foobarqix"
+ROLLOUT_STATUS_CMD="kubectl rollout status deployment/foobarquix -n foobarquix"
 until $ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 60 ]; do
   ATTEMPTS=$((ATTEMPTS + 1))
   sleep 10
@@ -111,7 +111,7 @@ cat <<EOF
 
 Kubernetes cluster ready
 
-foobarqix available under: http://foobarqix.${INGRESS_HOST}/
+foobarquix available under: http://foobarquix.${INGRESS_HOST}/
 argocd available under: http://argocd.${INGRESS_HOST}/
 
 You can delete dev-env by issuing: minikube delete

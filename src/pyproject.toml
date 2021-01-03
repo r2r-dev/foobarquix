@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "foobarqix"
+name = "foobarquix"
 version = "0.1.0"
 description = ""
 authors = ["r2r-dev <dev@r2r.sh>"]

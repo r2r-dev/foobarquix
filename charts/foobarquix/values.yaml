@@ -9,7 +9,7 @@ app:
   workers: 4
 
 image:
-  repository: 'foobarqix'
+  repository: 'foobarquix'
   tag: '0.1.0'
   digest: sha256:e4154f33e5210137c8dbc593afa357cc1cb969967d6ea3431a32ff9565a4e586
   pullPolicy: IfNotPresent
@@ -27,7 +27,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
   host:
-    name: foobarqix.kubernetes.local
+    name: foobarquix.kubernetes.local
     paths: [/]
 
 resources: {}

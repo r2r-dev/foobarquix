@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-MATCH_VERBS = ((3, "Foo"), (5, "Bar"), (7, "Qix"))
+MATCH_VERBS = ((3, "Foo"), (5, "Bar"), (7, "Quix"))
 
 
 class MatchResponse(BaseModel):
