@@ -17,10 +17,10 @@ User can interact with application via REST API by issuing `GET` requests.
 First run `vagrant up` in project root directory and enter virtualized environment using `vagrant ssh`
 Then run following commands to bootstrap local development cluster exposing `foobarquix` application.
 ```sh
-cd project
-make dev-env
+$ cd project
+$ make dev-env
 ```
-*Note: this process may take a while.*
+*Note: this process may take a while on first run.*
 
 Once development cluster is up and running you should see summary listing application address:
 ```
@@ -35,13 +35,13 @@ You can delete dev-env by issuing: minikube delete
 
 Finally, you can interact with application:
 1. Check application health:
-```
-curl http://foobarquix.192.168.49.2.nip.io/ready
+```sh
+$ curl http://foobarquix.192.168.49.2.nip.io/ready
 {"status":"ok"}
 ```
 2. Categorize numbers: 
-```
-curl http://foobarquix.192.168.49.2.nip.io/53
+```sh
+$ curl http://foobarquix.192.168.49.2.nip.io/53
 {"result":"FooBar"}
 ```
 
@@ -74,8 +74,25 @@ foobarquix
         └── data         Supplementary input data for tests
 ```
 
+## Development
+Provided `Makefile` is a starting point for application and infrastructure development:
+```sh
+$ make
+
+Usage:
+  make <target>
+  help             Display this help
+  image            Build foobarquix image
+  clean-image      Remove foobaquix image
+  build            Build foobarquix binary
+  test             Test foobarquix app
+  clean            Remove .cache directory and foobarquix binary
+  dev-env          Start a local Kubernetes cluster using minikube and deploy application
+```
+
 ## Web Routes
 All routes are available on `/` or `/redoc` paths with Swagger or ReDoc.
+
 Additionally, [OpenApi schema](https://github.com/r2r-dev/foobarquix/postman/openapi.json) and [Postman collection](https://github.com/r2r-dev/foobarquix/postman/FooBarQuix.postman_collection.json) are provided.
 
 ## License
