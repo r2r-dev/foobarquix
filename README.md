@@ -20,7 +20,7 @@ Then run following commands to bootstrap local development cluster exposing `foo
 $ cd project
 $ make dev-env
 ```
-*Note: this process may take a while on first run.*
+*Note: this process may take a while on first run. Approximately 25m for machine with 2 cores and 4G of memory*
 
 Once development cluster is up and running you should see summary listing application address:
 ```
